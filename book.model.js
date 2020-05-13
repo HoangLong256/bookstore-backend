@@ -33,6 +33,10 @@ const bookSchema = new mongoose.Schema({
     description:{
         type: String,
         default: 'NaN'
+    },
+    image:{
+        type: String,
+        default: 'defaul.jpg'
     }
 });
 module.exports = mongoose.model('Book', bookSchema);
