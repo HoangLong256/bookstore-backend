@@ -11,6 +11,10 @@ module.exports.create = (event, context, callback) => {
     .then(book =>
       callback(null, {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify(book)
       })
     )
@@ -31,6 +35,10 @@ module.exports.getOne = (event, context, callback) => {
       .then(book =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify(book)
         })
       )
@@ -51,6 +59,10 @@ module.exports.getAll =  (event, context, callback) => {
       .then(books =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify(books)
         })
       )
@@ -77,6 +89,10 @@ module.exports.update = (event, context, callback) => {
       .then(book =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify(book)
         })
       )
@@ -97,6 +113,10 @@ module.exports.delete = (event, context, callback) => {
       .then(book =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify({
             message: 'Removed note with id: ' + book._id,
             book: book

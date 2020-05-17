@@ -11,6 +11,10 @@ module.exports.create = (event, context, callback) => {
     .then(order =>
       callback(null, {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify(order)
       })
     )
@@ -31,12 +35,20 @@ module.exports.getOne = (event, context, callback) => {
       .then(order =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify(order)
         })
       )
       .catch(error =>
         callback(null, {
           statusCode: error.statusCode || 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           headers: { 'Content-Type': 'text/plain' },
           body: 'Could not fetch the item.'
         })
@@ -51,6 +63,10 @@ module.exports.getAll =  (event, context, callback) => {
       .then(orders =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify(orders)
         })
       )
@@ -77,6 +93,10 @@ module.exports.update = (event, context, callback) => {
       .then(order =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify(order)
         })
       )
@@ -97,6 +117,10 @@ module.exports.delete = (event, context, callback) => {
       .then(order =>
         callback(null, {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          },
           body: JSON.stringify({
             message: 'Removed note with id: ' + order._id,
             order: order

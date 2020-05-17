@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    shiped: {
+    shipped: {
         type: Boolean,
         default: false
     },
@@ -39,8 +39,12 @@ const orderSchema = new mongoose.Schema({
             type: Number,
             default: 1
         },
-        name:{
+        title:{
             type: String
+        },
+        price:{
+            type: Number,
+            default: 0
         }
     }]
 });
@@ -49,9 +53,9 @@ orderSchema.pre('save', async function (next){
     for(let i = 0; i < order.books.length; i++){
         let book = await Book.findOne({_id:order.books[i].id});
         if(!book){
-            order.books[i].name = "NaN";
+            order.books[i].title = "NaN";
         }else{
-            order.books[i].name = book.title;
+            order.books[i].title = book.title;
         }
     }
     next();
